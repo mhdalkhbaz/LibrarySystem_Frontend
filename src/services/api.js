@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://developermwess-001-site1.qtempurl.com';
  
  export const registerUser = async (username) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/User/RegisterUser/register-user`,
+    const response = await axios.post(`User/RegisterUser/register-user`,
       { username },
     );
     return response.data.data;
@@ -14,7 +13,7 @@ const API_BASE_URL = 'http://developermwess-001-site1.qtempurl.com';
 };
  export const fetchBooks = async (searchKey = '', userId = null) => {
   try {
-    const res = await axios.get(`${API_BASE_URL}/Book/GetBooks`, {
+    const res = await axios.get(`Book/GetBooks`, {
       params: { searchKey, userId },
     });
     return res.data.data || [];
@@ -27,7 +26,7 @@ const API_BASE_URL = 'http://developermwess-001-site1.qtempurl.com';
 export const borrowOrReturnBook = async (bookId, isBorrowing, userId) => {
   try {
     const res = await axios.post(
-      `${API_BASE_URL}//Book/BorrowOrReturnBook/${bookId}?isBorrowing=${isBorrowing}&userId=${userId}`
+      `/Book/BorrowOrReturnBook/${bookId}?isBorrowing=${isBorrowing}&userId=${userId}`
     );
     return res.data.data;
   } catch (error) {
